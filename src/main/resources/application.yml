@@ -1,0 +1,16 @@
+spring:
+  kafka:
+    consumer:
+      max-poll-records: 20000
+  cloud:
+    stream:
+      bindings:
+        registrations-outbound:
+          destination: registrations
+          content-type: text/plain
+        registrations-inbound:
+          group: registrations-listener
+          destination: registrations
+          content-type: text/plain
+          consumer:
+            batch-mode: true
